@@ -1,0 +1,23 @@
+version: '3.6'
+
+services:
+  express:
+    container_name: Express.js-server-container
+    build:
+      context: .
+      # target: django-dev
+    restart: always
+    tty: true
+    ports:
+      - "3000:3000"
+    volumes: # For debugging purposes
+      - ./src:/code/src   
+    environment:
+      # DB credentials needed to connect to the db
+      MONGODB_URI: ${MONGODB_URI}
+      USER: 
+      PASSWORD:
+      PORT:
+      NODE_ENV:
+      DEBUG:
+    #command: npm run dev

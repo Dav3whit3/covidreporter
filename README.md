@@ -2,7 +2,7 @@
 
 <details>
 
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)](#Installation)
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/lines/rainbow.png)](#Installation)
 <a href="#Installation"></a>
 
 <summary> :floppy_disk: &nbsp; Installation</summary>
@@ -24,32 +24,34 @@
 
   `DEBUG`
 
-
 - ## :wrench: &nbsp; Build and run container
 
   To run the container locally you can just run the `start.sh`:
 
   Development environment:
+
   ```bash
   sh start.sh -e dev
   ```
 
   Production environment:
+
   ```bash
   sh start.sh -e prod
   ```
+
   </details>
 
 <br>
 
 <details>
 
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)](#aproach)
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/lines/rainbow.png)](#aproach)
 <a href="#aproach"></a>
 
   <summary> :triangular_ruler: &nbsp; Approach</summary>
 
-- Marke it work locally :arrow_right: &nbsp;  Dockerize it
+- Marke it work locally :arrow_right: &nbsp; Dockerize it
 - Document readme at each commit made
 - External app architecture. Abstract docker commands into bash scripts
 - Clear folder structure
@@ -59,7 +61,7 @@
 
 <details>
 
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)](#testing)
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/lines/rainbow.png)](#testing)
 <a href="#testing"></a>
 
   <summary> :microscope: &nbsp; Testing</summary>
@@ -68,14 +70,12 @@
 
 <br>
 
-
 <details>
 
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)](#cud)
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/lines/rainbow.png)](#cud)
 <a href="#cud"></a>
 
   <summary> :soon: &nbsp; Currently under develop</summary>
-
 
 </details>
 

@@ -51,4 +51,5 @@ export const config = (app) => {
 
   // Handles access to the favicon
   app.use(favicon(path.join(__dirname, "../..", "public", "img", "favicon.ico")));
+  //console.log(path.join(__dirname, "../..", "public", "img", "favicon.ico"))
 };

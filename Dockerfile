@@ -19,9 +19,15 @@ COPY --chown=master:master package.json /code/
 COPY --chown=master:master server.js /code/
 COPY --chown=master:master nodemon.json /code/
 COPY --chown=master:master .env /code/
-# COPY --chown=master:master boot.sh /code/
 
 RUN npm install
 
 
+# ===== DEV =====
+FROM main as DEV
 CMD npm run dev
+
+
+# ==== PROD =====
+FROM main as PROD
+CMD npm run start

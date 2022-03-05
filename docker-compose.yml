@@ -1,11 +1,11 @@
 version: '3.6'
 
 services:
-  express:
-    container_name: Express.js-server-container
+  express-dev:
+    container_name: Express.js-DEVELOPMENT-container
     build:
       context: .
-      # target: django-dev
+      target: DEV
     restart: always
     tty: true
     ports:
@@ -20,4 +20,13 @@ services:
       PORT:
       NODE_ENV:
       DEBUG:
-    #command: npm run dev
+
+  express-prod:
+    container_name: Express.js-PROD-container
+    build:
+      context: .
+      target: PROD
+    restart: always
+    tty: true
+    ports:
+      - "3000:3000"

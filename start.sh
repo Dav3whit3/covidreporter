@@ -8,6 +8,8 @@ fi
 
 while getopts "u:e:" opt; do
   case $opt in
+
+    # ==== Local server ===== #
     e)
       if [ $OPTARG = "dev" ]; then
       echo " 🔰 Environment: $OPTARG 🔰" >&2
@@ -27,7 +29,9 @@ while getopts "u:e:" opt; do
         echo "Invalid option: -$OPTARG" >&2
       fi
       ;;
+    
 
+    # ==== HEROKU Deploy ===== #
     u)    
       if [ $OPTARG = "prod" ]; then
       echo "⏫  Pushing $OPTARG container to Heroku ⏫ " >&2

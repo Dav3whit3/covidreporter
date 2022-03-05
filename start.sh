@@ -6,7 +6,7 @@ if [ -z "$1" ]
 fi
 
 
-while getopts ":e:" opt; do
+while getopts "u:e:" opt; do
   case $opt in
     e)
       if [ $OPTARG = "dev" ]; then
@@ -27,6 +27,18 @@ while getopts ":e:" opt; do
         echo "Invalid option: -$OPTARG" >&2
       fi
       ;;
+
+    u)    
+      if [ $OPTARG = "prod" ]; then
+      echo "⏫  Pushing $OPTARG container to Heroku ⏫ " >&2
+      heroku container:push web -a mycovidreporter ;
+      heroku container:release web -a mycovidreporter ;
+      heroku logs --tail -a mycovidreporter
+      else
+        echo "Invalid option: -$OPTARG" >&2
+      fi
+      ;;
+
     \?)
       echo "Invalid option: -$OPTARG" >&2
       exit 1

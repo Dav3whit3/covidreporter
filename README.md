@@ -1,9 +1,8 @@
 <!-- ![alt text](static/images/home.png) -->
 
+[![-----------------------------------------------------](public/img/divider.png)](#)
+
 <details>
-
-[![-----------------------------------------------------](public/img/divider.png)](#Installation)
-
 <a href="#Installation"></a>
 
 <summary> :floppy_disk: &nbsp; Installation</summary>
@@ -49,8 +48,6 @@
 <br>
 
 <details>
-
-[![-----------------------------------------------------](public/img/divider.png)](#aproach)
 <a href="#aproach"></a>
 
   <summary> :triangular_ruler: &nbsp; Approach</summary>
@@ -64,8 +61,6 @@
 <br>
 
 <details>
-
-[![-----------------------------------------------------](public/img/divider.png)](#testing)
 <a href="#testing"></a>
 
   <summary> :microscope: &nbsp; Testing</summary>
@@ -75,12 +70,10 @@
 <br>
 
 <details>
-
-[![-----------------------------------------------------](public/img/divider.png)](#cud)
 <a href="#cud"></a>
 
   <summary> :soon: &nbsp; Currently under develop</summary>
 
 </details>
 
-<br>
+[![-----------------------------------------------------](public/img/divider.png)](#)

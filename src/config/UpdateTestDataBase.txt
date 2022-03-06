@@ -1,0 +1,5 @@
+`
+To copy PROD_DB.collection to DEV_DV.collection:
+
+  db.Users.find().forEach(function(d){ db.getSiblingDB('test_covidreporterdb')['Users'].insert(d); });
+`

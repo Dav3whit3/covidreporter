@@ -1,11 +1,13 @@
 #!/bin/bash
 
+# Force to supply an argument
 if [ -z "$1" ]
   then
     echo "❗ No argument supplied"
 fi
 
 
+# Parsing -e and -u arguments
 while getopts "u:e:" opt; do
   case $opt in
 

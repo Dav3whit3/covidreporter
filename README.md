@@ -2,7 +2,8 @@
 
 <details>
 
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/lines/rainbow.png)](#Installation)
+[![-----------------------------------------------------](public/img/divider.png)](#Installation)
+
 <a href="#Installation"></a>
 
 <summary> :floppy_disk: &nbsp; Installation</summary>
@@ -14,15 +15,18 @@
 
 - ## :closed_lock_with_key: &nbsp; Environment Variables
 
-  To run this project, you will need to add the following environment variables regarding DB mapping to your `.env` file:
+  Atlas MongoDB environment variables for DB mapping to include in `.env` file:
 
-  `MONGODB_URI`
+  `DEV_DB_NAME`
 
-  <br/>And the following ones to setup ...:
+  `PROD_DB_NAME`
 
-  <br/> A Boolean value for debugging session (Optional, default = False):
+  `DB_CLUSTER`
 
-  `DEBUG`
+  `DB_USER`
+
+  `DB_PASSWORD`
+
 
 - ## :wrench: &nbsp; Build and run container
 
@@ -46,7 +50,7 @@
 
 <details>
 
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/lines/rainbow.png)](#aproach)
+[![-----------------------------------------------------](public/img/divider.png)](#aproach)
 <a href="#aproach"></a>
 
   <summary> :triangular_ruler: &nbsp; Approach</summary>
@@ -61,7 +65,7 @@
 
 <details>
 
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/lines/rainbow.png)](#testing)
+[![-----------------------------------------------------](public/img/divider.png)](#testing)
 <a href="#testing"></a>
 
   <summary> :microscope: &nbsp; Testing</summary>
@@ -72,7 +76,7 @@
 
 <details>
 
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/lines/rainbow.png)](#cud)
+[![-----------------------------------------------------](public/img/divider.png)](#cud)
 <a href="#cud"></a>
 
   <summary> :soon: &nbsp; Currently under develop</summary>

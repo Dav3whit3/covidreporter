@@ -17,7 +17,7 @@ COPY --chown=master:master /src /code/src/
 COPY --chown=master:master /public /code/public/
 COPY --chown=master:master package.json /code/
 COPY --chown=master:master server.js /code/
-COPY --chown=master:master nodemon.json /code/
+# COPY --chown=master:master nodemon.json /code/
 COPY --chown=master:master .env /code/
 
 RUN npm install

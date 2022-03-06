@@ -1,7 +1,0 @@
-{
-	"events": {
-		"restart": "clear"
-	},
-	"watch": ["server.js", "src/"],
-  "ext": "js, css, hbs"
-}

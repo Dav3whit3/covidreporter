@@ -15,7 +15,8 @@ services:
       - "3000:3000"
       - "9229:9229"
     volumes: # For debugging purposes
-      - ./src:/code/src   
+      - ./src:/code/src
+      - ./public:/code/public   
     environment:
       # DB credentials needed to connect to the db
       DB_NAME: ${DEV_DB_NAME}

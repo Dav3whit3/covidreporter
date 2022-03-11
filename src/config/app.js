@@ -5,7 +5,7 @@
 import 'dotenv/config';
 
 // ℹ️ Connects to the database
-import { } from './dbConfig.js';
+import { } from './db.config.js';
 
 // Handles http requests (express is node js framework)
 // https://www.npmjs.com/package/express
@@ -13,7 +13,7 @@ import express from 'express';
 const app = express();
 
 // ℹ️  Add config app. It runs most middlewares
-import { config } from './appConfig.js'
+import { config } from './app.config.js'
 config(app)
 
 // default value for title local
@@ -22,8 +22,11 @@ const capitalized = string => string[0].toUpperCase() + string.slice(1).toLowerC
 app.locals.title = `${capitalized(projectName)}`;
 
 // 👇 Start handling routes here
-import { router } from '../routes/routesConfig.js'
+import { router } from '../routes/index.routes.js'
 app.use('/', router);
+
+import { authrouter } from "../routes/auth.routes.js";
+app.use('/', authrouter)
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 

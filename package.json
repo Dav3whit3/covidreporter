@@ -4,7 +4,6 @@
 	"description": "",
 	"main": "server.js",
 	"type": "module",
-  
 	"nodemonConfig": {
 		"events": {
 			"restart": "clear"
@@ -32,6 +31,7 @@
 	},
 	"homepage": "https://github.com/Web-Development-Bootcamp-11-2021/covidreporter#readme",
 	"dependencies": {
+		"bcryptjs": "^2.4.3",
 		"chart.js": "^3.7.1",
 		"cookie-parser": "^1.4.5",
 		"dotenv": "^8.2.0",

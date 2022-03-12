@@ -15,13 +15,13 @@ import favicon from "serve-favicon"
 // ℹ️ global package used to `normalize` paths amongst different operating systems
 // https://www.npmjs.com/package/path
 
-import path from "path"
-// Middleware configuration
-
-// Handles the handlebars
-// https://www.npmjs.com/package/hbs
+// Handles the handlebars https://www.npmjs.com/package/hbs
 import hbs from 'hbs';
 
+import session from 'express-session';
+
+import path from "path"
+// Middleware configuration
 
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
@@ -48,8 +48,19 @@ export const config = (app) => {
   hbs.registerPartials(path.join(__dirname, "..", "views/partials"));
   // Handles access to the public folder
   app.use(express.static(path.join(__dirname, "../..",  "public")));
-
   // Handles access to the favicon
   app.use(favicon(path.join(__dirname, "../..", "public", "img", "favicon.ico")));
-  //console.log(path.join(__dirname, "../..", "public", "img", "favicon.ico"))
+  // Session config
+  app.use(
+    session({
+      secret: process.env.SESS_SECRET,
+      resave: true,
+      saveUninitialized: false,
+      cookie: {
+        sameSite: 'none',
+        httpOnly: true,
+        maxAge: 60000 // 60 * 1000 ms === 1 min
+      }
+    })
+  );
 };

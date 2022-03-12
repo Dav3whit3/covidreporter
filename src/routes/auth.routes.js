@@ -11,9 +11,7 @@ authrouter.get('/signup', (req, res) =>
 
 
 authrouter.post('/signup', (req, res, next) => {
-
   Register(req, res, next)
-
 });
 
 

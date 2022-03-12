@@ -25,7 +25,7 @@ services:
 
   # ==== PROD =====
   express-prod:
-    container_name: Express.js-PROD-container
+    container_name: Express.js-PRODUCTION-container
     build:
       context: .
       target: PROD

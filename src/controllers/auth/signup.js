@@ -5,26 +5,30 @@ import { renderWithErrors } from "../../utils/auth.js";
 
 
 const Register = async (req, res, next) => {
-	const { email, password } = req.body;
-	const user = { email, password };
 
-	const userIsUnique = await isUserUnique(user.email);
+	const { email, password, repeatedPassword } = req.body;
+	const user = { email, password, repeatedPassword};
 
-	if (userIsUnique) {
-		try {
-			const newUser = await createUser(user);
-			res.redirect(301, "/");
-		} catch (error) {
-			if (error instanceof mongoose.Error.ValidationError) {
-				renderWithErrors(error.errors);
-			} else {
-				console.error(`Logging error: ${error}`);
-				renderWithErrors(res, error);
-			}
-		}
-	} else {
-		renderWithErrors(res, { email: "Email already in use!" }, user);
+	const passOk = arePasswordEqual(user.password, user.repeatedPassword)
+	if (!passOk) {
+		renderWithErrors(res, { email: "Passwords are not the same" }, user);
+		return;
 	}
+
+	const userOk = await isUserUnique(user.email);
+	if (!userOk) {
+		renderWithErrors(res, { password: "Email already in use!" }, user);
+		return;
+	}
+
+	try {
+		const newUser = await createUser(user);
+		res.redirect(301, "/");
+	}
+	catch (error) {
+		renderWithErrors(error.errors);
+	}
+
 };
 
 
@@ -34,6 +38,10 @@ const isUserUnique = async (email) => {
 	const isUnique = userSearch ? false : true;
 	return isUnique;
 };
+
+const arePasswordEqual = (passOne, passTwo) => {
+	return passOne === passTwo 
+}
 
 
 const createUser = async (user) => {

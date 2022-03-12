@@ -29,18 +29,21 @@
 
 - ## :wrench: &nbsp; Build and run container
 
-  To run the container locally you can just run the `start.sh`:
+  To run the container locally you can just run the `init.sh`:
 
   Development environment:
-
   ```bash
-  sh start.sh -e dev
+  sh init.sh -e dev
   ```
 
   Production environment:
-
   ```bash
-  sh start.sh -e prod
+  sh init.sh -e prod
+  ```
+
+  Heroku deploy:
+  ```bash
+  sh init.sh -u prod
   ```
 
   </details>

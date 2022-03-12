@@ -31,4 +31,7 @@ const userSchema = new Schema(
 //Create moongose.model arg=>modelSchema
 // export model
 
-export const User = model('User', userSchema);
+const User = mongoose.model('User', userSchema);
+
+
+export { User }

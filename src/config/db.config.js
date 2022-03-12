@@ -20,3 +20,4 @@ mongoose
 		console.error("Error connecting to mongo: ", err);
 	});
 
+export { MONGO_URI }

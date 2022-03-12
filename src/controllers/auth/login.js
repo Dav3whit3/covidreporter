@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import { User } from '../../models/User.model.js';
 import bcrypt from 'bcryptjs';
-import { renderWithErrors } from './utils.js';
+import { renderWithErrors } from '../../utils/auth.js'; 
 
 
 const Login = (req, res, next) => {

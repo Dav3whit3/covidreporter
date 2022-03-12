@@ -1,60 +1,66 @@
 import mongoose from "mongoose";
-import User from "../models/User.model.js";
+import { User } from "../../models/User.model.js";
 import bcrypt from 'bcryptjs';
-
+import { renderWithErrors } from '../../utils/auth.js'; 
 
 const saltRounds = 10;
 
 
-const doRegister = (req, res, next) => {
-	const user = ({ email, password } = req.body);
+const Register = async (req, res, next) => {
 
-	if (isUserUnique(user.email)) {
-		createUser(user)
+  const {email, password} = req.body
+  const user = {email, password}
+
+	//const user = {email, password} = req.body
+	const unique = await isUserUnique(user.email)
+
+	if (unique) {
+		createUser(req, res, next, user)
 	} else {
-		renderWithErrors({ email: "Email already in use!" }, user);
+		renderWithErrors(res, { email: "Email already in use!" }, user);
 	}
 };
 
 
-const isUserUnique = (email) => {
-	User.findOne({ email })
-		.then((result) => {
-			if (result) {
-				return false;
-			} else {
-				return true;
-			}
-		})
-		.catch((err) => {
-			if (err instanceof mongoose.Error.ValidationError) {
-				renderWithErrors(err.errors);
-			} else {
-				next(err);
-			}
+const isUserUnique = async (email) => {
+
+	try {
+		const userSearch = await User.findOne({ email })
+		const isUnique = userSearch ? false : true
+		return isUnique
+
+	}
+
+	catch (error) {
+		if (error instanceof mongoose.Error.ValidationError) {
+			renderWithErrors(error.errors);
+		} else {
+			next(err);
+		}
+	}
+};
+
+
+const createUser = async (req, res, next, user) => {
+	const salt = await bcrypt.genSalt(saltRounds)
+	const hashedPassword = await bcrypt.hash(user.password, salt)
+	console.log(hashedPassword)
+	try {
+
+		const createdUser = await User.create({
+			email: user.email,
+			passwordHash: hashedPassword,
 		});
+
+		res.render('index', {user: createdUser})
+
+	}
+	catch (error) {
+		console.error(`Logging error: ${error}`)
+		renderWithErrors(res, error);
+	}
+	
 };
 
 
-const createUser = (user) => {
-	bcrypt
-		.genSalt(saltRounds)
-		.then((salt) => bcrypt.hash(user.password, salt))
-		.then((hashedPassword) => console.log(`Password hash: ${hashedPassword}`))
-		.then((hashedPassword) => {
-			return User.create({
-				// username: username
-				email: user.email,
-				// passwordHash => this is the key from the User model
-				//     ^
-				//     |            |--> this is placeholder (how we named returning value from the previous method (.hash()))
-				passwordHash: hashedPassword,
-			});
-		})
-		.then((userFromDB) => {
-			console.log("Newly created user is: ", userFromDB);
-		})
-		.then(() => res.redirect("/"))
-
-		.catch((error) => next(error));
-};
+export { Register }

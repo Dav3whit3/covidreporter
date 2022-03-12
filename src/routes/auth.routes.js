@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { Login } from "../controllers/auth/login.js";
+import { Register } from "../controllers/auth/signup.js";
 
 const authrouter = new Router();
 
@@ -10,8 +11,9 @@ authrouter.get('/signup', (req, res) =>
 
 
 authrouter.post('/signup', (req, res, next) => {
-  console.log('The form data: ', req.body);
-  Login(req.body)
+
+  Register(req, res, next)
+
 });
 
 

@@ -26,17 +26,14 @@ import session from "express-session";
 import MongoStore from "connect-mongo";
 
 import path from "path";
-// Middleware configuration
 
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-/* console.log(`FILENAME = ${__filename}`)
-console.log(`dirname  = ${__dirname}`)
-console.log(path.join(__dirname, "../..", "public")) */
 
+// Middleware configuration
 export const config = (app) => {
 	// In development environment the app logs
 	app.use(logger("dev"));

@@ -1,7 +1,7 @@
 export const errorHandling = (app) => {
   app.use((req, res, next) => {
     // this middleware runs whenever requested page is not available
-    res.status(404).render("not-found");
+    res.status(404).render("not-found", {layout: false});
   });
 
   app.use((err, req, res, next) => {
@@ -11,7 +11,7 @@ export const errorHandling = (app) => {
 
     // only render if the error ocurred before sending the response
     if (!res.headersSent) {
-      res.status(500).render("error");
+      res.status(500).render("not-found", {layout: false});
     }
   });
 };

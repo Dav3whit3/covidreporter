@@ -13,12 +13,14 @@ const isAuthenticated = (req, res, next) => {
 }
 
 
-const renderWithErrors = (errors, user) => {
-	res.render("auth/register", {
+const renderWithErrors = (res, errors, user) => {
+  console.log(errors)
+	res.render("auth/signup", {
 		errors: errors,
-		user: user,
-	});
-};
+    user: user,
+    layout: false
+  },
+  )};
 
 
 export { logout, isAuthenticated, renderWithErrors }

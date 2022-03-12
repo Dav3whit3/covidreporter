@@ -20,4 +20,11 @@ mongoose
 		console.error("Error connecting to mongo: ", err);
 	});
 
+	process.on('SIGINT', function() {
+    mongoose.connection.close(function () {
+        console.log('Force to close the MongoDB conection');
+        process.exit(0);
+    });
+});
+
 export { MONGO_URI }

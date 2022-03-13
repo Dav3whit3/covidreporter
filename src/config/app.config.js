@@ -15,23 +15,21 @@ import cookieParser from "cookie-parser";
 // https://www.npmjs.com/package/serve-favicon
 import favicon from "serve-favicon";
 
-// ℹ️ global package used to `normalize` paths amongst different operating systems
-// https://www.npmjs.com/package/path
-
 // Handles the handlebars https://www.npmjs.com/package/hbs
 import hbs from "hbs";
 
-import session from "express-session";
+import { expressSession } from "./session.config.js";
+import { passportSession } from "./passport.config.js";
 
-import MongoStore from "connect-mongo";
+import passport from "passport";
 
+// ℹ️ global package used to `normalize` paths amongst different operating systems
+// https://www.npmjs.com/package/path
 import path from "path";
-
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-
 
 // Middleware configuration
 export const config = (app) => {
@@ -55,20 +53,9 @@ export const config = (app) => {
 		favicon(path.join(__dirname, "../..", "public", "img", "favicon.ico"))
 	);
 	// Session config
-	app.use(
-		session({
-			secret: process.env.SESS_SECRET,
-			resave: true,
-			saveUninitialized: false,
-			cookie: {
-				sameSite: "none",
-				httpOnly: true,
-				maxAge: 60000, // 60 * 1000 ms === 1 min
-			},
-			store: MongoStore.create({
-				// Store session cookies
-				mongoUrl: MONGO_URI,
-			}),
-		})
-	);
+	app.use(expressSession);
+	passportSession()
+
+	app.use(passport.initialize());
+	app.use(passport.session());
 };

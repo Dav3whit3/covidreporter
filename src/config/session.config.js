@@ -1,27 +1,29 @@
-/* const expressSession = require('express-session');
-const MongoStore = require('connect-mongo');
-
-const mongoose = require('mongoose')
-const User = require('../models/User.model')
+import session from "express-session";
+import MongoStore from "connect-mongo";
 
 const sessionMaxAge = process.env.SESSION_AGE || 7;
 
-module.exports.sessionConfig = expressSession({
-    secret: process.env.COOKIE_SECRET || 'Super secret (change it!)',
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-        secure: false,
-        maxAge: 24 * 3600 * 1000 * sessionMaxAge,
-        httpOnly: true
-    },
-    store: new MongoStore({
-        mongoUrl: mongoose.connection._connectionString,
-        ttl: 24 * 3600 * sessionMaxAge
-    })
+const expressSession = () => session({
+	secret: process.env.SESS_SECRET,
+	resave: true,
+	saveUninitialized: false,
+	cookie: {
+		sameSite: "none",
+		httpOnly: true,
+		maxAge: 60000, // 60 * 1000 ms === 1 min
+	},
+	store: MongoStore.create({
+		// Store session cookies
+        mongoUrl: MONGO_URI,
+        ttl: 24 * 3600 * sessionMaxAge,
+	}),
 });
 
-module.exports.loadUser = (req, res, next) => {
+
+export { expressSession }
+
+
+/* module.exports.loadUser = (req, res, next) => {
     const userId = req.session.userId;
 
     if(userId) {

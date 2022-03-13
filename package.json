@@ -34,6 +34,7 @@
 		"axios": "^0.26.1",
 		"bcryptjs": "^2.4.3",
 		"chart.js": "^3.7.1",
+		"connect-flash": "^0.1.1",
 		"connect-mongo": "^4.6.0",
 		"cookie-parser": "^1.4.5",
 		"dotenv": "^8.2.0",
@@ -42,6 +43,8 @@
 		"hbs": "^4.1.1",
 		"mongoose": "^6.1.2",
 		"morgan": "^1.10.0",
+		"passport": "^0.5.2",
+		"passport-local": "^1.0.0",
 		"serve-favicon": "^2.5.0"
 	}
 }

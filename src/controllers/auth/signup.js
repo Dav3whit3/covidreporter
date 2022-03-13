@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { User } from "../../models/User.model.js";
 import bcrypt from "bcryptjs";
-import { renderWithErrors } from "../../utils/auth.js";
+import { renderWithErrors } from "../../utils/auth.utils.js";
 
 
 const Register = async (req, res, next) => {
@@ -11,13 +11,13 @@ const Register = async (req, res, next) => {
 
 	const passOk = arePasswordEqual(user.password, user.repeatedPassword)
 	if (!passOk) {
-		renderWithErrors(res, { email: "Passwords are not the same" }, user);
+		renderWithErrors(res, { password: "Passwords are not the same" }, user);
 		return;
 	}
 
 	const userOk = await isUserUnique(user.email);
 	if (!userOk) {
-		renderWithErrors(res, { password: "Email already in use!" }, user);
+		renderWithErrors(res, { email: "Email already in use!" }, user);
 		return;
 	}
 

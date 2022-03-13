@@ -1,6 +1,7 @@
-const logout = (req, res, next) => {
+
+const Logout = (req, res, next) => {
   req.session.destroy();
-  res.redirect('/');
+  res.redirect('/login');
 };
 
 
@@ -23,4 +24,4 @@ const renderWithErrors = (res, errors, user) => {
   )};
 
 
-export { logout, isAuthenticated, renderWithErrors }
+export { Logout, isAuthenticated, renderWithErrors }

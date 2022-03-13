@@ -2,6 +2,7 @@ import { Router } from "express";
 import passport from "passport";
 import { Login } from "../controllers/auth/login.js";
 import { Register } from "../controllers/auth/signup.js";
+import { Logout } from "../utils/auth.utils.js";
 
 
 const authrouter = new Router();
@@ -24,6 +25,12 @@ authrouter.get('/login', (req, res) =>
 authrouter.post('/login', (req, res, next) => {
   Login(req, res, next)
 });
+
+
+authrouter.get('/signout', (req, res) =>
+  Logout(req, res)
+);
+
 
 
 export { authrouter }

@@ -1,9 +1,11 @@
 import session from "express-session";
 import MongoStore from "connect-mongo";
+import { MONGO_URI } from "./db.config.js";
+
 
 const sessionMaxAge = process.env.SESSION_AGE || 7;
 
-const expressSession = () => session({
+const expressSession = session({
 	secret: process.env.SESS_SECRET,
 	resave: true,
 	saveUninitialized: false,

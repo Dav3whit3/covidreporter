@@ -5,7 +5,7 @@
 import 'dotenv/config';
 
 // ℹ️ Connects to the database
-import { } from './db.config.js';
+//import { } from './db.config.js';
 
 // Handles http requests (express is node js framework)
 // https://www.npmjs.com/package/express
@@ -29,8 +29,9 @@ import { authrouter } from "../routes/auth.routes.js";
 app.use('/', authrouter)
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
-
 import { errorHandling } from '../utils/errorsConfig.js'
 errorHandling(app)
+
+
 
 export { app }

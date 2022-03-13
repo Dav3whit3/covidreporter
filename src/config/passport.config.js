@@ -1,6 +1,8 @@
 import { User } from "../models/User.model.js";
 import passport from "passport";
 import { Strategy as LocalStrategy } from "passport-local";
+import { MONGO_URI } from "./db.config.js";
+
 
 const passportSession = () => {
 	passport.serializeUser((user, cb) => cb(null, user._id));

@@ -45,37 +45,3 @@ const isValidPassword = (password, passwordHash) => {
 
 
 export { Login };
-
-  
-  
-  
-  
-  
-/* User.findOne({ email: email })
-.then((userFound) => {
-    if(userFound) {
-        return userFound.checkPassword(password)
-            .then((match) => {
-                if(!match) {
-                    res.render('auth/login', {
-                        errors: {
-                            password: 'Invalid email or password',
-                            email: 'Invalid email or password'
-                        },
-                        user: req.body
-                    });
-                } else {
-                    req.session.userId = userFound._id;
-                    res.redirect('/profile');
-                }
-            })
-    } else {
-        res.render('auth/login', {
-            errors: {
-                email: 'Invalid email or password',
-                password: 'Invalid email or password'
-            }
-        });
-    }
-})
-.catch((e) => next(e)); */

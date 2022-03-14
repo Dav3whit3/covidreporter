@@ -20,7 +20,7 @@ services:
     environment:
       # DB credentials needed to connect to the db
       DB_NAME: ${DEV_DB_NAME}
-      DEBUG: true
+      # DEBUG: true
 
 
   # ==== PROD =====
